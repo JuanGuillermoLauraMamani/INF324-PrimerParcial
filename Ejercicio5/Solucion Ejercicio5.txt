@@ -1,0 +1,7 @@
+select n.sigla as Materia,
+(sum(case when p.departamento ='01' then n.notaf end ))/(sum(case when p.departamento ='01' then 1 end )) as 'Sucre',
+(sum(case when p.departamento ='02' then n.notaf end ))/(sum(case when p.departamento ='02' then 1 end )) as 'La Paz',
+(sum(case when p.departamento ='06' then n.notaf end ))/(sum(case when p.departamento ='06' then 1 end )) as 'Tarija'
+FROM persona p 
+INNER JOIN nota n ON p.ci=n.ci 
+GROUP BY n.sigla
